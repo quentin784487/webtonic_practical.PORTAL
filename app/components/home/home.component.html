@@ -1,0 +1,97 @@
+<div class="container" ng-controller="ClientManagementController" ng-init="init()">
+  <h1>Student Management</h1>
+  <p>Here you can add, edit or delete students</p>
+  <hr />
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Student Number</label>
+        <input type="text" name="StudentNumber" class="form-control" ng-model="filterArgs.studentNumber" />
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" name="FirstName" class="form-control" ng-model="filterArgs.firstName" />
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Surname</label>
+        <input type="text" name="Surname" class="form-control" ng-model="filterArgs.surname" />
+      </div>
+    </div>        
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Course</label>
+        <select class="form-control" ng-model="filterArgs.course">
+          <option value="" selected> - Select Course - </option>
+          
+        </select>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-primary" ng-click="onRefresh()">Search</button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">Total results: {{ totalCount }}</div>
+        <div class="panel-body">
+          <button class="btn btn-primary" ng-click="onCrudOpen(null)">New</button>
+          <button class="btn btn-primary" ng-click="onExportData()">Import Student Data</button>
+          <br />
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Student Number</th>
+                <th>Course</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="student in students">
+                <td>{{ client.firstName }}</td>
+                <td>{{ client.surname }}</td>
+                <td>{{ client.studentNumber }}</td>
+                <td>{{ client.course }}</td>                
+                <td>
+                  <div class="btn-group action-menu" uib-dropdown is-open="status.isopen">
+                    <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle
+                      ng-disabled="disabled">
+                      Actions <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                      <li role="menuitem"><a class="context-menu" ng-click="onCrudOpen(client)">Edit</a></li>
+                      <li role="menuitem"><a class="context-menu"
+                          ng-click="openDeleteModal(client)">Delete</a></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td align="right" colspan="6">
+                  <ul uib-pagination total-items="totalCount" ng-model="pageIndex" items-per-page="pageSizeSelected"
+                    ng-change="pageChanged()"></ul>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+          <p class="text-center" ng-if="clients.length == 0">No records to display.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<span ng-controller="ClientCrudController">
+  <script type="text/ng-template" id="deleteModalContent.html">
+    <div ng-include="'components/home/modal/delete.modal.html'"></div>
+  </script>
+</span>

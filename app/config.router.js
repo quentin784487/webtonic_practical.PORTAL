@@ -25,6 +25,10 @@ angular.module('app')
                         abstract: true,
                         url: '/app',
                         templateUrl: layout
+                    })
+                    .state('app.home', {
+                        url: '/home',
+                        templateUrl: 'components/home/home.component.html'
                     });                
             }
         ]
