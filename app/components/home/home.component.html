@@ -40,7 +40,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Total results: {{ totalCount }}</div>
         <div class="panel-body">
-          <button class="btn btn-primary" ng-click="onExportData()">Import Student Data</button>
+          <button class="btn btn-primary" ng-click="openImportModal()">Import Student Data</button>
           <br />
           <table class="table table-striped">
             <thead>
@@ -90,7 +90,7 @@
 </div>
 
 <span ng-controller="HomeController">
-  <script type="text/ng-template" id="deleteModalContent.html">
-    <div ng-include="'components/home/modal/delete.modal.html'"></div>
+  <script type="text/ng-template" id="importModalContent.html">
+    <div ng-include="'components/home/modal/import.modal.html'"></div>
   </script>
 </span>

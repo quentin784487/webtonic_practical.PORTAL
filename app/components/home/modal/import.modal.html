@@ -1,0 +1,16 @@
+<div class="modal-body wrapper-lg">
+  <h3 class="m-t-none m-b font-thin">Import Student Data</h3>
+  <hr />
+  <div class="row">
+    <form role="form" name="bulkDirectForm" method="post" enctype="multipart/form-data" novalidate>
+      <div class="form-group">
+        <input type="file" class="form-control" id="bulkDirectFile" placeholder="CSV file with phone numbers and amount" ng-model="prd.bulk_direct_file" required accept=".csv">
+      </div>      
+    </form>
+  </div>
+  <hr />
+  <div align="right">
+    <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="uploadForm.$invalid">Import</button>
+    <button class="btn btn-outline-primary" type="button" ng-click="cancel()">Cancel</button>
+  </div>  
+</div>
