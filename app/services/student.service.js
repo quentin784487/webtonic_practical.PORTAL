@@ -1,8 +1,8 @@
 app.service('studentService', function ($http, $q, settingsService) {
   
-  this.importStudents = function (students) {
+  this.importStudents = function (request) {
     var deferred = $q.defer()    
-    $http.post(settingsService.settings.baseUrl + 'Students/ImportStudents', JSON.stringify(students)).then(function (data) {        
+    $http.post(settingsService.settings.baseUrl + 'Students/ImportStudents', JSON.stringify(request)).then(function (data) {        
         deferred.resolve(data);
       }, function (error) {
         deferred.reject(error);
@@ -10,9 +10,9 @@ app.service('studentService', function ($http, $q, settingsService) {
       return deferred.promise;
   }
 
-  this.getStudents = function (student) {
+  this.getStudents = function (request) {
     var deferred = $q.defer()    
-    $http.post(settingsService.settings.baseUrl + 'Students/GetStudents?pageIndex=' + student.pageIndex + '&pageSize=' + student.pageSize, JSON.stringify(student)).then(function (data) {        
+    $http.post(settingsService.settings.baseUrl + 'Students/GetStudents?pageIndex=' + request.pageIndex + '&pageSize=' + request.pageSize, JSON.stringify(request)).then(function (data) {        
         deferred.resolve(data);
       }, function (error) {
         deferred.reject(error);
@@ -20,9 +20,9 @@ app.service('studentService', function ($http, $q, settingsService) {
       return deferred.promise;
   }
 
-  this.updateStudent = function (student) {
+  this.updateStudent = function (request) {
     var deferred = $q.defer()    
-    $http.post(settingsService.settings.baseUrl + 'Students/UpdateStudent', JSON.stringify(student)).then(function (data) {        
+    $http.post(settingsService.settings.baseUrl + 'Students/UpdateStudent', JSON.stringify(request)).then(function (data) {        
         deferred.resolve(data);
       }, function (error) {
         deferred.reject(error);
@@ -30,9 +30,9 @@ app.service('studentService', function ($http, $q, settingsService) {
       return deferred.promise;
   }
 
-  this.deleteStudent = function (student) {
+  this.deleteStudent = function (request) {
     var deferred = $q.defer()    
-    $http.post(settingsService.settings.baseUrl + 'Students/DeleteStudent', JSON.stringify(student)).then(function (data) {        
+    $http.post(settingsService.settings.baseUrl + 'Students/DeleteStudent', JSON.stringify(request)).then(function (data) {        
         deferred.resolve(data);
       }, function (error) {
         deferred.reject(error);

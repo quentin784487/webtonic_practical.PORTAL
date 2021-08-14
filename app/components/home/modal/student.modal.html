@@ -1,0 +1,46 @@
+<div class="modal-body wrapper-lg">
+    <h3 class="m-t-none m-b font-thin">Update Student Information</h3>
+    <hr />
+    <div class="row">
+      <form name="studentForm">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Student Number</label>
+            <input type="text" class="form-control" ng-model="$parent.student.studentNumber" required />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" ng-model="$parent.student.firstName" required />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Surname</label>
+            <input type="text" class="form-control" ng-model="$parent.student.surname" required />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Grade</label>
+            <input type="text" class="form-control" ng-model="$parent.student.grade" required />
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Course Type</label>
+            <select class="form-control" ng-model="$parent.student.courseId">
+              <option value="" selected> - Select Course - </option>
+              <option ng-repeat="courseType in courseTypes" value="{{ courseType.id }}" selected>{{ courseType.description }}</option>          
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div align="right">
+      <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="studentForm.$invalid">Save</button>
+      <button class="btn btn-outline-primary" type="button" ng-click="cancel()">Cancel</button>
+    </div>  
+  </div>
