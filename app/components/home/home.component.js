@@ -123,6 +123,9 @@ app.controller('ImportStudentsController', ['$scope', '$uibModalInstance', 'stud
 
         studentService.importStudents(students).then(function() {
           $uibModalInstance.close();
+        }, function(exception){
+          //handle logging
+          toaster.pop('Import Students', "Error", "An error has occurred. Please check your network connection.");
         });    
       }
       reader.readAsText(filename.files[0]);
@@ -159,7 +162,10 @@ app.controller('UpdateStudentController', ['$scope', '$uibModalInstance', 'stude
 
     studentService.updateStudent(request).then(function(){
       $uibModalInstance.close();
-    });    
+    }, function(exception){
+      //handle logging
+      toaster.pop('Update Student', "Error", "An error has occurred. Please check your network connection.");
+    });     
   };
 
   $scope.cancel = function () {    
@@ -174,6 +180,9 @@ app.controller('DeleteStudentController', ['$scope', '$uibModalInstance', 'stude
     }
     studentService.deleteStudent(request).then(function(){      
       $uibModalInstance.close();
+    }, function(exception){
+      //handle logging
+      toaster.pop('Delete Student', "Error", "An error has occurred. Please check your network connection.");
     });  
   };
 
